@@ -1,0 +1,63 @@
+<body>
+    <h2>JS in head</h2>
+    <p id="demo">A Para</p>
+    <p id="disp"></p>
+    <p id="quotes"></p>
+    <p id="typeofdemo">I'm a 'typeof' demo</p>
+    <button onclick="myFunc()">Test</button>
+    <button onclick="quoter()">Quotes</button>
+    <button onclick="writer()">I write to bottom and clear everything</button>
+    <!-- Separately introducing JS, can be in head or body -->
+    <script>
+
+        // ; are optional in JS
+        
+        // JS automatically move all declarations to the top, therefore the following code will not cause any issues. But assignment does not!!
+        auto='yes';
+        console.log("Logging before init cuz of Hoisting:" +auto)
+        var auto
+
+        //Gives undefined as auto2 has not been declared before.
+        console.log("Testing if assignment gets hoisted:"+auto2)
+        var auto2 = 'yes'
+
+        // using 'typeof' on the assignment below identifies the datatype as 'object'
+        demo_holder = document.getElementById('demo')
+
+        function display(){
+            var carName="Volvo"
+            //typeof is used to identify which type of data does a var hold.
+            document.getElementById('typeofdemo').innerHTML= typeof carName+" "+carName
+        }
+
+        var x = mul(9,4)
+        function mul(a,b){
+            return a*b;
+        }
+        demo_holder.innerHTML=x;
+
+        function myFunc(){
+            demo_holder.innerHTML="Changed txt";
+            display();
+        }
+        document.write(90+12);
+        document.getElementById('disp').innerHTML="A para";
+        console.log(90);
+
+        function writer(){
+            //Logs to the browser console.
+            console.log('Updated');
+            //Completely rewrites the HTML page.
+            document.write('Rewritten & cleared');
+        }
+
+        function quoter(){
+            var a = "a";
+            var b = "b";
+            var c = [1,2,3,4,5]
+            // applying braces adds the elements, removing them concats them.
+            document.getElementById('quotes').innerHTML = a+"<br>"+b+"<br>"+(c[0]+c[1])+"<br>"+c[0]+c[1]+"<br>";
+        }   
+        var demo_holder
+    </script>
+</body>

@@ -1,0 +1,58 @@
+<body>
+    <script>
+        /* Using the Math object class and calling its method.
+        *   JS has the following predefined objects:
+            - Math
+            - Number
+            - Date
+            - Array
+            - String
+        */
+
+        //Number object.
+        var n = new Number(5);
+        var v = n.toString();
+        var t = 5;
+        document.write(n+": "+typeof n+"<br>"+v+": "+typeof v+"<br>"+t+": "+typeof t+'<br>')
+        document.write(Math.random()+"<br>");
+        document.write(Math.min(-10,2,3,6,10,-100,0)+"<br>")
+        document.write(Math.abs(-4.4)+"<br><br>")
+
+        //String object
+        var s='helloworld'
+        document.write(s.substring(3,6)+'<br>')
+        document.write(s.substr(3,6)+'<br>')
+        document.write(s.slice(3,6)+'<br><br>')
+
+        //Date object
+        var d = new Date(2019,12,07)
+        document.write(d.getDate()+'<br>')
+        document.write(d.getFullYear()+'<br>')
+        document.write(d.getSeconds()+'<br>')
+        document.write(d.getDay()+'<br><br>')
+
+        /* Array object
+            - reverse()
+            - sort()
+            - splice() - (x,y,..) ,x -> position to add elements, y-> how many elements to be deleted from x
+            idk what splice does, check.
+            - concat()
+            - join() - joins all elements in the Array with the specified separator. Outputs a string.
+            - push() - add at end
+            - pop() - remove from end
+            - shift() , deletes from front of array
+            - unshift() , inserts at front of array
+        */
+        var alpha = ['a','e','x','d','t','b','m','j']
+        var start = 2
+        var stop = 5
+        document.write('Array: '+alpha+'<br>')
+        document.write('Reversing: '+alpha.reverse()+'<br>')
+        document.write('Sorting: '+alpha.sort()+'<br>')
+        document.write('Splicing: '+alpha.splice(start,0,['hello','im added'])+'<br>')
+        document.write('Concat '+start+' and '+stop+': '+alpha.concat(start,stop)+'<br>')
+        document.write('Joining '+alpha+': '+alpha.join('~')+',Datatype of join o/p:'+typeof(alpha.join())+'<br>')
+
+
+    </script>
+</body>

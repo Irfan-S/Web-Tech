@@ -1,0 +1,41 @@
+<body>
+    <h1>JS Arrays</h1>
+    <ul id='mul'>Fruits </ul>
+    <ul id='demo'>Fruits after adding an element to the 6th position</ul>
+    <ul id='demo1'>Spliced</ul>
+    <table id='table'> Tables</table>
+    <script>
+            //Writing inside a tag using JS
+            var fruits =['Apple','Orange','Banana','Mango']
+            for(var x=0;x<fruits.length;x++){
+                document.getElementById('mul').innerHTML+='<li>'+fruits[x]+'</li>'
+            }
+            fruits[4]='Lemon'
+            for(var x=0;x<fruits.length;x++){
+                document.getElementById('demo').innerHTML+='<li>'+fruits[x]+'</li>'
+            }
+
+            //Idk what splice does, check it.
+            fruits.splice(2,1,"Kiwi",'Melon')
+            for(var x=0;x<fruits.length;x++){
+                document.getElementById('demo1').innerHTML+='<li>'+fruits[x]+'</li>'
+            }
+
+            alert("Test alert")
+            var age = prompt('Enter your age: ')
+            //converting the age string to integer
+            age = parseInt(age)+2 // or Number(age)+2
+            alert('New age: '+age)
+            var b=confirm('Age sure?')
+            if(b){
+                console.log(b)
+                alert("age true: "+age)
+            }else{
+                alert('no age')
+            }
+            txt ="<tr>"
+            for(var x=1;x<6;x++){
+                txt+="<td>"+2+"<td>"+"*"+x+":"+2*x
+            }
+        </script>
+</body>

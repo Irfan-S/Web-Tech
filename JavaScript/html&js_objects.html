@@ -1,0 +1,138 @@
+<body>
+    <!--
+        Objects and custom Objects in JS - 17/08/19.
+    -->
+    <h2>
+        JS Objects
+    </h2>
+    <ul id='demo'></ul>
+    <input id='a'>
+    <br>
+    <input id='b'>
+    <br>
+    <button onclick='add()'>Add</button>
+    <br>
+    <input id='ans'>
+    <br>
+    <p>Input Data: <input id='c'></p>
+    <br>
+    <button onclick="performOps()">Enter</button>
+    <input id="displayOps" readonly>
+    <p id='tables'></p>
+
+
+
+    <script>
+        //Inline initialization of a new Object with member attributes.
+        var person ={firstName:"Sam",lastName:'Tom',age:40,eyeColor:"Brown"};
+
+        //Creating a new object and initializing it.
+        var person = new Object();
+        person.firstName="John"
+        person.lastName="Doe"
+        person.age=20;
+        person.eyeColor="Blue"
+
+        var txt = ""
+        var x
+        for(x in person){
+            txt += person[x]+" "
+        }
+        document.getElementById('demo').innerHTML += "<li>"+txt+"</li>";
+        // Can use person.age or person['age'] to access data from object.
+        document.getElementById('demo').innerHTML += "<li> <b> "+person.firstName+ "</b> is <u>"+person['age']+"</u> years old. </li>";
+
+        //To delete an object from a custom object.
+        delete person.age; // or person['age']
+        document.getElementById('demo').innerHTML += '<li><b>'+ person.firstName+ "</b> is <u> "+person['age']+"</u> years old.</li>";
+
+        //Objects can also have functions defined within.
+        var car = {
+            brand:'Volvo',
+            color:'Green',
+            id: 1000,
+
+            getBrand: function(){
+                return this.brand;
+            }
+        }
+
+        car.getColor =function(){
+            return this.color;
+        }
+        document.getElementById('demo').innerHTML+='<li> Car is: <u>'+car.getBrand()+'</u> </li>'
+
+        //Constructors in JS
+        function Person(first,last,age,eye){
+            this.first = first,
+            this.last = last,
+            this.age = age,
+            this.eye = eye
+        }
+        /*
+
+        Constructors cannot have functions within them. Obviously...
+        Hence the code below won't run, and will prevent everything below it from being executed.
+
+        Person.getName = function(){
+            return this.first+" "+this.last
+        }
+        */
+
+        var John = new Person('John','Ram','22','yellow')
+        document.getElementById('demo').innerHTML += '<li> Person is : <u>'+John.first+'</u></li>'
+
+
+        var output=""
+        for(i=1;i<6;i++){
+            output+="<h1>"+i+"'s table </h1> <ul>"
+            for(j=1;j<11;j++){
+                //NOTE: <li> does not need a closing tag, it auto-closes for single line assignments.
+                output+="<li>"+i+" x "+ j+ " = "+j*i
+            }
+            output+='</ul>'
+        }
+
+        document.getElementById('tables').innerHTML = output;
+
+        function add(){
+            var a,b,c
+            a = Number(document.getElementById('a').value);
+            b = Number(document.getElementById('b').value);
+            c=a+b
+            document.getElementById('ans').value=c;
+        }
+
+        function performOps(){
+            var data = document.getElementById('c').value;
+            if(Number.isInteger(parseInt(data))){
+                var tmp = String(data);
+                var ar = tmp.split("")
+                var rev = ar.reverse();
+                var ans = rev.join("")
+                document.getElementById('displayOps').value="Reverse of "+tmp+" is "+ans //+ tmp.reverse();
+                window.alert("Is it a palindrome: "+(ans==data?'yes':'no'))
+            }else{
+                var a = printVowels(data)
+                window.alert("Vowels are: "+a)
+            }
+        }
+
+        function printVowels(value){
+            console.log("Value is: "+value)
+            value = String(value);
+            var ans=""
+            var i=0;
+
+            for(i=0;i<value.length;i++){
+                console.log("POS: "+i+" Val: "+ value.charAt(i))
+                if(value.charAt(i)=='a'||value.charAt(i)=='e'||value.charAt(i)=='i'||value.charAt(i)=='u'||value.charAt(i)=='o'){
+                    ans+=value.charAt(i)
+                }
+            }
+            return ans
+        }
+
+
+    </script>
+</body>

@@ -1,0 +1,126 @@
+<!--
+    All CSS properties experimented in this file.
+    Dialog boxes.
+-->
+
+<head>
+    
+    <style>
+        /* To group a property,
+            h1,p{
+                //insert properties here
+            }
+            */
+        /* * is for universal selector i.e all elements are affected */
+        *{
+            font-style: italic;
+            background-color: rgb(209, 209, 209);
+        }
+        h1{
+            /* color: blue; */
+            /*font-family: sans-serif;*/
+            font-size: 30px;
+        }
+        p{
+            /* color:red; */
+            /*font-family: cursive;*/
+            font-size: 160%;
+            border : 8px dashed darkgreen;
+            padding: 10px;
+            margin: 40px;
+            /* To inherit a non-inheritable property from parent */
+            border:inherit;
+        }
+        img{
+            border: 5px solid red;
+            padding: 10px;
+        }
+
+        /* Showing inheritance of properties*/
+        body{
+            font-family: Tahoma;
+            color:darkgreen;
+            margin:100px;
+        }
+
+        table,th,td{
+            border:1px black solid;
+            /* Overriding color here*/
+            color: black;
+            /*Removes the double borders that show up*/
+            border-collapse: collapse;
+            /* Space between the double borders, only works if it isn't collapsed*/
+            border-spacing: 10px;
+            padding: 10px;
+            text-align: center;
+
+        }
+        #question {
+            width: 80%;
+        }
+        table#question th{
+            background-color: blue;
+            color: white;
+        }
+        #question tr:nth-child(even) {
+            background-color: blue;
+        }
+        #question tr:nth-child(1) {
+            background-color: red;
+        }
+        #question tr:hover{
+            font-size: 160%;
+        }
+        </style>
+</head>
+<title>CSS Gymkhana</title>
+<body>
+    <h1>This is a heading</h1>
+    <p>This is a para</p>
+    <img src="/Resources/07_4k.jpg" height="500px" width ="1000px" center>
+    <br>
+    <br>
+    <hr/>
+    <br>
+
+    <h1 align="center" >Basic HTML table</h1>
+    <table border>
+        <tr>
+            <th>First Name</th>
+            <!-- Colspan attribute determines how many colums a table header/element will span for -->
+            <th colspan="2">Last Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Jill</td>
+            <td>Smith</td>
+            <td>Holmes</td>
+            <td>40</td>
+        </tr>
+        <tr>
+                <td>Jack</td>
+                <td>Steve</td>
+                <td>Jacob</td>
+                <td>25</td>
+            </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    
+    <table id="question">
+            <caption align="center" >Phone number details</caption>
+        <tr>
+            <th>Name:</th>
+            <td>Bill Gates</td>
+        </tr>
+        <tr>
+            <th rowspan="2">Telephone:</th>
+            <td>a</td>
+        </tr>
+        <tr>
+            <td>b</td>
+        </tr>
+    </table>
+</body>

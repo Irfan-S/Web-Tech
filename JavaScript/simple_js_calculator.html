@@ -1,0 +1,50 @@
+<body>
+    <h1 align="center">Simple Calculator</h1>
+    <p>Enter 1st Number: <input id='a'> </p>
+    <br>
+    <p>Enter 2nd Number: <input id='b'> </p>
+    <br>
+    <button onclick = 'numops(this.value)' value='+' id='add'>+</button>
+    <button onclick = 'numops(this.value)' value='-' id='add'>-</button>
+    <button onclick = 'numops(this.value)' value='*' id='add'>*</button>
+    <button onclick = 'numops(this.value)' value='/' id='add'>/</button>
+    <br>
+    <p>Answer: <input id='ans' readonly> </p>
+    <br>
+    <h1 align='center'style="color: red">Squares and Cubes Using JS</h1>
+    <hr/>
+    <table align='center' border style="border-color: red" id='m_table'>
+    </table>
+    <script>
+        function numops(op){
+            var a,b,c
+            a = Number(document.getElementById('a').value)
+            b = Number(document.getElementById('b').value)
+            switch(op){
+                case '+':
+                    c = a+b
+                    break
+                case '-':
+                    c = a-b
+                    break
+                case '*':
+                    c = a*b
+                    break
+                case '/':
+                    c=a/b
+                    break
+                default:
+                    c = "NA"
+            }
+            document.getElementById('ans').value = c
+        }
+
+        var op="<tr><td><h1>Number</h1></td><td><h1>Square</h1></td><td><h1>Cube</h1></td></tr>"
+        for(i=1;i<11;i++){
+            op+="<tr><td>"+i+"</td><td>"+Math.pow(i,2)+"</td><td>"+Math.pow(i,3)+"</td></tr>"
+            op+="<tr><td>"+i+"</td><td>"+Math.pow(i,2)+"</td><td>"+Math.pow(i,3)+"</td></tr>"
+        }
+        document.getElementById('m_table').innerHTML=op;
+
+        </script>
+</body>
