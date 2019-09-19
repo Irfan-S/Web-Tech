@@ -1,0 +1,19 @@
+<head>
+    <script>
+        test()
+        //This is hoisted
+        function test(){
+            //writeln -> write to a new line.
+            document.writeln("hello")
+        }
+
+        //Won't work, as b() is not hoisted, resulting in an error.
+        b();
+        //This is not hoisted
+        var b = function(){
+            document.write("Trying this")
+        }
+        //Due to the error above, this wont be called.
+        b();
+    </script>
+</head>

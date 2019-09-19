@@ -1,0 +1,94 @@
+<!--
+    18/09/2019
+    Intro to DOM, showing tag, id and class selection(single and multiple), setting attributes.
+-->
+<body>
+    <p> Test</p>
+    <p class='intro'>Hello</p>
+    <p class='intro'>World</p>
+
+    <h1 id ='a'>Hi</h1>
+    <h1>1</h1>
+    <p id="rep"/>
+    <p id='demo'></p>
+
+    <p class='qs'>Query</p>
+    <p class='qs'>Selector</p>
+    <p class='qs'>Test</p>
+
+    <input type = 'text' value="Im a button" id='changer'>
+    <br>
+    <button onclick='changeTag()'>Click me</button>
+    <button onclick='changeColor()'>Change color of H1</button>
+    <br>
+    <!-- Target _blank opens the link in a new window -->
+    <a id='imalink' target="_blank">Im a link</a>
+    <br>
+    <button onclick='changeLink()'>Change to link</button>
+    <br>
+    <br>
+    <br>
+    <div id='div1'>
+        <p id='x'>P1</p>
+        <p id='y'>P2</p>
+    </div>
+    <br>
+    <button onclick="addStuff()">Add stuff</button>
+    <button onclick="removeStuff()">Remove stuff</button>
+
+    <script>
+            //For selecting all tags with a specific class.
+            var me = document.getElementsByClassName('intro')
+            document.getElementById('demo').innerHTML = "The text from first intro para is "+ me[0].innerHTML +" and second is "+me[1].innerHTML
+
+            //For selecting all tags based off tag name.
+            var t = document.getElementsByTagName('h1')
+            document.getElementById('rep').innerHTML = "The text from the H1 tags is "+t[0].innerHTML+" and "+t[1].innerHTML
+
+            //For selecting a specific CSS selector
+            var s = document.querySelectorAll('p.qs')
+            document.getElementById('demo').innerHTML="Query selector changed me"
+
+            //Using set attribute to change text input to button input. Changing a specific attribute inside the tag.
+            function changeTag(){
+                document.getElementById('changer').setAttribute('type','button')
+            }
+
+            function changeColor(){
+                var x = document.getElementsByTagName('h1')
+                x[0].setAttribute('style', 'color:red')
+            }
+            function changeLink(){
+                var x = document.getElementById('imalink')
+                x.setAttribute('href','https://google.com')
+
+                /*
+                    To change it inline
+                    DOES NOT WORK, WHY?
+                    document.getElementByID('imalink').href="https://google.com"
+                */
+            }
+
+            function addStuff(){
+
+            var heading = document.createElement("h2")
+            var node = document.createTextNode("This is a new heading");
+            heading.appendChild(node)
+            var element = document.getElementById("div1");
+            element.appendChild(heading);
+
+            //insertBefore(element to be inserted before, element to be inserted)
+
+            //element.removeChild(heading)
+            }
+
+            //DOES NOT WORK, WHY?
+            function removeStuff(){
+                var heading = document.createElement('h2');
+                var element = document.getElementById('div1');
+                element.removeChild(heading)
+            }
+
+
+        </script>
+</body>
