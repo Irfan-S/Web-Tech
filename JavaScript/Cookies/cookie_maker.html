@@ -1,0 +1,28 @@
+<!-- Add, displays and deletes cookies -->
+
+<body>
+    <button onclick="addCookie()">Add</button>
+    <br>
+    <button onclick="listCookie()">List</button>
+    <br>
+    <button onclick="delCookie()">Delete</button>
+    <br>
+    <h1 id='reveal'></h1>
+    <p id="disp"></p>
+    <script>
+        var count=1;
+        function addCookie(){
+            document.cookie=count+"="+count+";";
+            count++;
+        }
+        function listCookie(){
+            document.getElementById("reveal").innerHTML="Cookie List"
+            document.getElementById("disp").innerHTML = document.cookie;
+        }
+        function delCookie(){
+            var now = new Date();
+            count--;
+            document.cookie=count+"="+count+";expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        }
+    </script>
+</body>

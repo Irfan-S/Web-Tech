@@ -1,0 +1,91 @@
+<body>
+    <!-- The onclick method is an inline event handler -->
+    <input type="button" value="Ask me" onclick="askMe()"/>
+
+    <!-- W3C model for listener -->
+    <input type="button" id="clickme" value="Click "/>
+    <input type="button" id="colorchange" value="Change color"/>
+
+    <!-- 'this' represents the object which triggered the event -->
+    <h1 onclick="this.innerHTML='Oops!'">Click me</h1>
+
+    <br>
+
+    <input type="button" id="hoverme" value="Hover over me"/>
+    <div id="textarea">
+
+    </div>
+    <br>
+
+    <!-- Passing the event object to the function being called -->
+    <h2 onclick="showCoords(event)">Click to get x and y pos</h2>
+    <p id="demo"></p>
+
+    <div id="pos" style="width: 300px; height: 300px; border: solid 2px black" onmousemove="updateCoords(event)" onmouseout="clear"></div>
+
+
+
+
+
+
+    <script>
+    function askMe(){
+        var a = window.prompt("Please ask a question")
+        alert("T")
+    }
+
+    //W3C model for listener.
+    var t = document.getElementById("clickme")
+    t.addEventListener("click",clickme,false) //3rd argument is false by default, if not specified.
+
+    function clickme(){
+        alert("You've clicked")
+    }
+
+    document.getElementById("colorchange").addEventListener("click",colorchange);
+    function colorchange(){
+        document.body.style.backgroundColor="green"
+    }
+
+    // Adding multiple listeners results in chaining. Allows functions to be executed one  by one.
+    // To demonstrate multiple event listeners added to a single element.
+
+    var but = document.getElementById("hoverme");
+    but.addEventListener("mouseover",mouseIn)
+    but.addEventListener("mouseout",mouseOut)
+
+    var str=""
+    function mouseIn(){
+        str+="<br>Mouse inside!"
+        // DOES NOT WORK : document.body.innerHTML+="<br>Mouse inside!";
+        document.getElementById("textarea").innerHTML=str;
+    }
+
+    function mouseOut(){
+        str+="<br> Mouse outside!"
+        // DOES NOT WORK : document.body.innerHTML+="<br> Mouse outside!";
+        document.getElementById("textarea").innerHTML=str;
+    }
+
+    function showCoords(my_event){
+        var x = my_event.clientX;
+        var y = my_event.clientY;
+        var coords = "X and Y coords: "+x+", "+y;
+        document.getElementById("demo").innerHTML=coords;
+    }
+
+    var def = document.getElementById("pos");
+
+
+    function updateCoords(event){
+        var x = event.clientX;
+        var y = event.clientY;
+        document.getElementById("demo").innerHTML="Coords: "+x+", "+y;
+
+    }
+    function clear(){
+        document.getElementById("demo").innerHTML=""
+    }
+
+    </script>
+</body>

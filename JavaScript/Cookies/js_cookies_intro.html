@@ -1,0 +1,72 @@
+<!-- 
+    Used to save a small amount of data, for larger amounts use localStorage(Class skipped, self study) 
+
+    Has the following fields:
+        - expires: when does it expire, default is when browser closes. Time in UTC format.
+        - domain: domain name of site
+        - path: path to directory that set the cookie. To tell the browser which path the cookie belongs to. Default is current page.
+        - secure: cookie can only be retrievied with a secure server
+        - (COMPULSORY) Name=Value: cookies are set and retrieved in key-value pairs.
+
+    toUTCString()- converts a Date object to a string in UTC format.
+
+    To access cookies if multiple present
+        var cooks = document.cookie;
+    cookiearray = cooks.split(";");
+    for(var i=0;i<cookiearray.length;i++){
+        name = cookiearray[i].split("=")[0]
+        value = cookiearray[i].split("=")[1];
+        // and perform ops on name-value now.
+    }
+
+-->
+<body>
+<select id="ex1" onchange="setColor()">
+    <option value="white">Select a color</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+</select>
+
+<form name="myform" action="">
+    Enter name:<input type="text" name="customer"/>
+    <input type="button" value="Set Cookie" onclick="writeCookie()"/>
+</form>
+
+<script>
+
+    function writeCookie(){
+        if(document.myform.customer.value==""){
+            alert("Enter some value!");
+            return;
+        }
+        //Getting today's month and adding one to it. Using this to set expiry of da cookie.
+        var now = new Date();
+        now.setMonth(now.getMonth()+1);
+
+        cookievalue = document.myform.customer.value;
+        document.cookie = "firstname="+cookievalue+";expires="+now.toUTCString()+";";
+        document.write("Setting cookies: "+"firstname="+cookievalue);
+    }
+
+    window.onload=function(){
+        if(document.cookie.length!=0){
+            //Retrieving and splitting the cookie at every '=' character
+            var key = document.cookie.split("=");
+            console.log("Cookie retrieved: "+key);
+            document.getElementById("ex1").value=key[1];
+            document.body.style.backgroundColor = key[1];
+        }
+    }
+
+    function setColor(){
+        var ch = document.getElementById("ex1").value;
+        document.body.style.backgroundColor= ch;
+        //Setting a cookie with name 'color' and value ch.
+        document.cookie="color="+ch+";expires=Fri,19 Aug 2020 01:00:00 UTC;";
+    }
+
+
+
+</script>
+</body>

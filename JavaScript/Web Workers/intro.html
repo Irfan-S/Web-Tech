@@ -1,0 +1,14 @@
+<!--
+    - Web workers are background scripts, and are heavy-weight.
+    - When a script is executing inside a Web Worker, it cannot access the window and DOM API
+    Syntax:
+        - var worker = new Worker('task.js')
+        Start by calling: worker.postMesssage()
+    
+    Methods:
+        var worker = new Worker('ble.js')
+        - worker.postMessage() <- can pass in a string or JSON object as argument.
+        - worker.terminate() <- to terminate a worker from main page
+        - self.close() <- to terminate the worker from within itself.
+        - onmessage() <- inside the worker, starts it up when postMessage() is called from the worker object.
+    -->
