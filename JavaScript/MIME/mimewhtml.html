@@ -1,0 +1,22 @@
+<!--
+    MIME handles data transmission such as completed HTML forms from browser to server.
+
+    For forms, we use multipart/form-data.
+        - Delimited by a string started with '--'.
+        - Each part is its own entity w own HTTP headers, 'Content-Disposition', and 'Content-Type'
+        - multipart/byteranges type is used to send partial responses to browser.
+
+    Unrecognized resources are saved as application/octet-stream. Most browsers don't load these resources, and require that they be saved on disk before use, for security reasons.
+
+    vnd -> Vendor specific subtype.
+    Example : application/vnd-somecompany-datatype
+-->
+<body>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="text" name="description" value="Some text">
+        <br>
+        <input type="file" name = "myFile">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>

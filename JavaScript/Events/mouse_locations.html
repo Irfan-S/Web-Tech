@@ -1,0 +1,19 @@
+<html>
+<body>
+    <div>Mouse X is : <div id='mousex'></div></div>
+    <div>Mouse X is : <div id='mousey'></div></div>
+    <div id = 'check' style='height:100px; width : 200px; background-color: red'></div>
+
+
+
+    <script>
+            var t=0
+            document.getElementById('check').addEventListener("mousemove",updateCoord,false);
+            function updateCoord(event){
+                console.log(t++)
+                document.getElementById('mousex').innerHTML= event.clientX;
+                document.getElementById('mousey').innerHTML= event.clientY;
+            }
+            </script>
+</body>
+</html>

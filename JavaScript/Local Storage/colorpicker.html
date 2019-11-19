@@ -1,0 +1,63 @@
+<!--
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div{
+                border:1px solid black;
+                height:200px;
+                width:300px;
+                position:absolute;
+                top:100px;
+                left:200px;
+            }
+            textarea{
+
+                margin:25px
+            }
+        </style>
+    </head>
+
+    <body>
+
+        Pick any color <input type="color" id="pick" onchange="change()">
+
+        <div id="box">
+            <textarea rows="10" cols="30" id="ipText">
+            </textarea>
+        </div>
+        <script>
+            window.onstorage = test; //Script to be run when a Web Storage area is updated
+            alert(localStorage.getItem("color"))
+            if (localStorage.getItem("color")) {
+                box.style.background = localStorage.getItem("color")
+
+            }
+            function test() {
+                box.style.background = localStorage.getItem("color")
+            }
+            pick.oninput = change; //oninput event is triggered when input is received from the user
+            function change()
+            {
+                var col = document.getElementById("pick")
+                var box = document.getElementById("box")
+                box.style.background = col.value
+                localStorage.setItem("color", col.value);
+            }
+           
+        </script>
+    </body>
+<-->
+    <!DOCTYPE html>
+<html>
+    <body>
+        <input type="text" id="myInput" oninput="myFunction()">
+        <p id="demo"></p>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myInput").value;
+                document.getElementById("demo").innerHTML = "You wrote: " + x;
+            }
+        </script>
+    </body>
+</html>

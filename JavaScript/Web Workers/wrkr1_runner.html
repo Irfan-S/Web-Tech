@@ -1,0 +1,19 @@
+<head>
+    <script>
+        if(window.Worker){
+            var worker =  new Worker('wrkr1.js');
+
+            worker.onmessage= function (event){
+                document.getElementById('result').innerHTML = event.data;
+            }
+        }else{
+            alert("Sorry, web workers not supported.")
+        }
+        </script>
+</head>
+<body>
+    <div id='result'>
+
+    </div>
+</body>
+</html>

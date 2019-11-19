@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<style>
+	</style>
+	</head>
+	<body>
+	
+	<h1 style align='center' id='head'>  Javascript and Web Workers</h1>
+	<div id='print'></div>
+	
+	<script>
+	if(window.Worker)
+	{
+		var mywork= new Worker("file1.js");
+		var message={addThis:{num1:1,num2:2}};
+		mywork.postMessage(message);
+		mywork.onmessage=function(event){
+			console.log(event.data.result);
+			document.getElementById('print').innerHTML=event.data.result;
+		}
+	}
+	</script>
+	</body>
+	</html>

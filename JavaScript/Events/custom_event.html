@@ -1,0 +1,39 @@
+<body>
+        <h1 id="elem">Hello for John!</h1>
+
+<pre id="rabbit">
+        |\   /|
+         \|_|/
+         /. .\
+        \_Y_/=
+        {>o<}
+      </pre>
+      <button onclick="hide()">Hide()</button>
+      
+      <script>
+           // additional details come with the event to the handler
+           elem.addEventListener("hello", function(event) {
+            alert(event.detail.name);
+          });
+          elem.dispatchEvent(new CustomEvent("hello", {
+            detail: { name: "John" }
+          }));
+          // hide() will be called automatically in 2 seconds
+          function hide() {
+              var event = new CustomEvent("hide", {
+                  cancelable: true // without that flag preventDefault doesn't work
+              });
+              if (!rabbit.dispatchEvent(event)) {
+                  alert('The action was prevented by a handler');
+              } else {
+                  rabbit.hidden = true;
+              }
+          }
+      
+          rabbit.addEventListener('hide', function (event) {
+              if (confirm("Call preventDefault?")) {
+                  event.preventDefault();
+              }
+          });
+      </script>
+      </body>

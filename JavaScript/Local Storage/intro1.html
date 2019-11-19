@@ -1,0 +1,29 @@
+<head>
+    <script>
+        function clickCounter(){
+            if(typeof(Storage) !='undefined'){
+                if(localStorage.clickcount){
+                    localStorage.clickcount = Number(localStorage.clickcount)+1;
+                }else{
+                    localStorage.clickcount=1;
+                }
+                document.getElementById('result').innerHTML = "You have clicked button "+ localStorage.clickcount +" time(s)";
+            }else{
+                alert("Sorry bob");
+            }
+        }
+
+        // This function is to load the div id if localstorage has data in it.
+        window.onload=function(){
+        if(localStorage.clickcount!="undefined"){
+            document.getElementById('result').innerHTML = "You have clicked button "+ localStorage.clickcount +" time(s)";
+        }
+    }
+        </script>
+</head>
+<body>
+    <p><button onclick="clickCounter()">Clickety Click!</button></p>
+    <div id= 'result'></div>
+    <p>Click the button to see the counter increase</p>
+    <p>Counter value stays even if page is refreshed/reloaded</p>
+</body>
